@@ -1,0 +1,19 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.mobile-header {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+  width: 100%;
+  position: fixed;
+  background: white;
+  @include desktop {
+    display: none;
+  }
+  &__logo {
+    width: 10rem;
+    height: auto;
+  }
+}

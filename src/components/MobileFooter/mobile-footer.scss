@@ -1,0 +1,20 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.mobile-footer {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: white;
+    @include desktop {
+      display: none;
+    }
+    &__icon {
+      width: 2rem;
+      height:2rem;
+    }
+  }
