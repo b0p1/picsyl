@@ -1,5 +1,6 @@
-import "./styles/global.scss";
+import "./styles/global.scss"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomeFeedPage from "./pages/HomeFeedPage/HomeFeedPage";
 
 function App() {
   return (
