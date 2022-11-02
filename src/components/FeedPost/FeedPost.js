@@ -2,7 +2,7 @@ import "./feed-post.scss";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import heart from "../../assets/icons/heart.svg";
+import emptyHeart from "../../assets/icons/empty-heart.svg";
 
 function FeedPost(props) {
   const URL = "http://localhost:8081/posts";
@@ -49,8 +49,10 @@ function FeedPost(props) {
             src={`http://localhost:8081/images/${item.post_img}`}
           />
           <div className="home-feed__post__like-container">
-            <img className="home-feed__post__like" src={heart} />
+            {/* <h3>{item.likes.like_num}</h3> */}
+            <img className="home-feed__post__like" src={emptyHeart} />
           </div>
+
           <div className="home-feed__post__desc">
             <h4 className="home-feed__post__desc-username">
               {" "}
