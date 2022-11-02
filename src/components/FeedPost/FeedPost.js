@@ -49,7 +49,7 @@ function FeedPost(props) {
             src={`http://localhost:8081/images/${item.post_img}`}
           />
           <div className="home-feed__post__like-container">
-            {/* <h3>{item.likes.like_num}</h3> */}
+            <h3>{item.likes.length}</h3>
             <img className="home-feed__post__like" src={emptyHeart} />
           </div>
 
