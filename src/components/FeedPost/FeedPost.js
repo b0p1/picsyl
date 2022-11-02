@@ -2,6 +2,7 @@ import "./feed-post.scss";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import heart from "../../assets/icons/heart.svg";
 
 function FeedPost(props) {
   const URL = "http://localhost:8081/posts";
@@ -33,19 +34,32 @@ function FeedPost(props) {
     return "loading";
   }
   return (
-    <div className="home-feed" >
+    <div className="home-feed">
       {posts.map((item) => (
         <div className="home-feed__post" key={item.post_id}>
-        
           <div className="home-feed__post-details">
-            <img className="home-feed__post__profile" src={`http://localhost:8081/images/${item.user_img}`} />
-            
+            <img
+              className="home-feed__post__profile"
+              src={`http://localhost:8081/images/${item.user_img}`}
+            />
+            <h3 className="home-feed__post__username">{item.user_name} </h3>
           </div>
           <img
             className="home-feed__post__img"
             src={`http://localhost:8081/images/${item.post_img}`}
           />
-          <p> {item.post_desc}</p>
+          <div className="home-feed__post__like-container">
+            <img className="home-feed__post__like" src={heart} />
+          </div>
+          <div className="home-feed__post__desc">
+            <h4 className="home-feed__post__desc-username">
+              {" "}
+              {item.user_name}{" "}
+              <span className="home-feed__post__desc-txt">
+                {item.post_desc}{" "}
+              </span>
+            </h4>
+          </div>
         </div>
       ))}
     </div>
