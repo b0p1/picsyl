@@ -1,0 +1,23 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.home-feed{
+    padding:5rem 0;
+    &__post{
+        &-details{
+            padding: .5rem 1rem;
+            display: flex;
+        }
+        &__profile{
+            object-fit: cover;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+        }
+        &__img{
+            width: 100%;
+
+        }
+    }
+}
