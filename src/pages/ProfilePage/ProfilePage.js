@@ -8,45 +8,27 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function ProfilePage() {
-  const userURL = "http://localhost:8081/users";
+  const userURL = `${process.env.REACT_APP_SERVER_URL}/users`;
   const [user, setUser] = useState([]);
   const [userPosts, setUserPosts] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
     axios
-      .get(`${userURL}`)
+      .get(`${userURL}/${id}`)
+
       .then((resp) => {
         setUser(resp.data);
-        const userId = user.id || resp.data[0].id ;
-        // console.log(userId);
-        return axios.get(`${userURL}/${userId}`);
-      })
-      .then((resp) => {
-        setUser(resp.data);
+        axios.get(`${userURL}/${id}/posts`).then((resp) => {
+          setUserPosts(resp.data);
+        });
       })
       .catch(() => {
         console.error("Error getting User");
       });
   }, [id]);
 
-  useEffect(() => {
-    axios
-      .get(`${userURL}`)
-      .then((resp) => {
-        setUserPosts(resp.data);
-        const userId = userPosts.user_id || resp.data[0].id;
-        return axios.get(`${userURL}/${userId}/posts`);
-      })
-      .then((resp) => {
-        setUserPosts(resp.data);
-      })
-      .catch(() => {
-        console.error("Error getting Users user");
-      });
-  }, [id]);
-
-//   console.log(user);
+  //   console.log(user);
 
   // prevents error when first rendering
   if (!user) {
@@ -57,7 +39,7 @@ function ProfilePage() {
       <MobileHeader />
       <Header />
       <ProfileDesc user={user} />
-      <ProfileFeed userPosts={userPosts}/>
+      <ProfileFeed userPosts={userPosts} />
       <MobileFooter />
     </div>
   );

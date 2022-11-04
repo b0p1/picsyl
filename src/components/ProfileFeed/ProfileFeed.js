@@ -5,16 +5,19 @@ function ProfileFeed({ userPosts }) {
   if (!userPosts) {
     return "loading";
   }
+  {
+    console.log(userPosts);
+  }
   return (
     <div className="profile-feed">
       {userPosts.map((item) => (
         <div className="profile-feed__post" key={item.id}>
           <img
             className="profile-feed__post"
-            src={`http://localhost:8081/images/${item.img}`}
+            src={`${process.env.REACT_APP_SERVER_URL}/images/${item.img}`}
           />
           <div className="profile -feed__post__like-container">
-            <h3>{item.length}</h3>
+            <h3>{item.likes.length}</h3>
             <img className="profile -feed__post__like" src={emptyHeart} />
           </div>
           <div className="profile -feed__post__desc">
