@@ -1,0 +1,11 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.profile-feed{
+    display: flex;
+    flex-wrap: wrap;
+    &__post{
+        width: 100%;
+    }
+}

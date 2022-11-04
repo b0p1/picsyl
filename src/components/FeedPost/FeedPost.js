@@ -11,7 +11,7 @@ function FeedPost(props) {
 
   const { id } = useParams();
 
-  //   console.log(selectedPost);
+    console.log(posts);
 
   useEffect(() => {
     axios
@@ -36,17 +36,17 @@ function FeedPost(props) {
   return (
     <div className="home-feed">
       {posts.map((item) => (
-        <div className="home-feed__post" key={item.post_id}>
+        <div className="home-feed__post" key={item.id}>
           <div className="home-feed__post-details">
             <img
               className="home-feed__post__profile"
-              src={`http://localhost:8081/images/${item.user_img}`}
+              src={`http://localhost:8081/images/${item.user_img}`} alt={`${item.username}'s profile picture`}
             />
-            <h3 className="home-feed__post__username">{item.user_name} </h3>
+            <h3 className="home-feed__post__username">{item.username} </h3>
           </div>
           <img
             className="home-feed__post__img"
-            src={`http://localhost:8081/images/${item.post_img}`}
+            src={`http://localhost:8081/images/${item.img}`}
           />
           <div className="home-feed__post__like-container">
             <h3>{item.likes.length}</h3>
@@ -56,9 +56,9 @@ function FeedPost(props) {
           <div className="home-feed__post__desc">
             <h4 className="home-feed__post__desc-username">
               {" "}
-              {item.user_name}{" "}
+              {item.username}{" "}
               <span className="home-feed__post__desc-txt">
-                {item.post_desc}{" "}
+                {item.desc}{" "}
               </span>
             </h4>
           </div>

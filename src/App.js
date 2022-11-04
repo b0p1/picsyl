@@ -1,6 +1,7 @@
 import "./styles/global.scss"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeFeedPage from "./pages/HomeFeedPage/HomeFeedPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
@@ -8,9 +9,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomeFeedPage />} />
-          {/* <Route path="/users/:id" element={<ProfilePage />} />
-          <Route path="/upload" element={<AddPostPage />} />
-          <Route path="*" element={<NotFoundPage/>} /> */}
+          <Route path="/users/:id" element={<ProfilePage />} />
+          {/* <Route path="/upload" element={<AddPostPage />} /> */}
+          {/* <Route path="*" element={<NotFoundPage/>} /> */}
         </Routes>
       </BrowserRouter>
     </>

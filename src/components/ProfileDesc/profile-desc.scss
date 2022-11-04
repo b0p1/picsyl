@@ -1,0 +1,29 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.profile {
+  &-desc {
+    padding: 5rem 0;
+    &-top {
+      padding: 0 2rem;
+      padding-top: 1rem;
+      &__img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+    &-bottom {
+      padding: 0 2rem;
+      &__name {
+        margin: 0;
+        padding-bottom: 0.75rem;
+      }
+      &__desc {
+        margin: 0;
+      }
+    }
+  }
+}
