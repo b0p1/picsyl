@@ -2,6 +2,44 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.upload-form{
-    padding: 5rem 1rem;
+.upload-form {
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  &__choose-file {
+    padding: .55rem 3rem; 
+    background: $purple;
+    position: relative;
+    color: #fff;
+    border-radius: 4rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $jost-med;
+    font-size: 1.125rem;
+  }
+  &__file {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    &-icon{
+        filter: brightness(0) invert(1);
+        // margin: 0 1rem;
+        position: absolute;
+        top: .65rem;
+        left: 5rem;
+    }
+  }
+  &__submit-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
+

@@ -37,20 +37,25 @@ function UploadPage(props) {
         }}
         className="upload-form"
       >
-        <label htmlFor="file">Image file</label>
-        <input
-          className="upload-form__file"
-          type="file"
-          name="file"
-          id="file"
-          //   value=
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        {/* <img
-          className="upload-form__button-icon"
-          src={PublishIcon}
-          alt="Publish Icon"
-        /> */}
+        {/* <label htmlFor="file">Image file</label> */}
+        <div className="upload-form__choose-file">
+        <img
+            className="upload-form__file-icon"
+            src={PublishIcon}
+            alt="Publish Icon"
+          />
+          Choose an Image
+          <input
+            className="upload-form__file"
+            type="file"
+            name="file"
+            id="file"
+            //   value=
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+        
+        </div>
+
         <label className="upload-form__label" htmlFor="desc-box">
           Add An Image Caption
         </label>
@@ -63,9 +68,9 @@ function UploadPage(props) {
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         ></textarea>
-        <div className="upload-form-container">
+        <div className="upload-form__submit-container">
           <Link to="/">
-            <h2 className="upload-form__cancel">Cancel</h2>
+            <button className="upload-form__cancel">Cancel</button>
           </Link>
           <div className="upload-form-button-container">
             <button type="submit" className="upload-form__button">
