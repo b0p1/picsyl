@@ -3,6 +3,8 @@ import { useParams , Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import emptyHeart from "../../assets/icons/empty-heart.svg";
+import redHeart from "../../assets/icons/red-heart.svg"
+import addComment from "../../assets/icons/comment.svg"
 
 
 function FeedPost(props) {
@@ -53,6 +55,9 @@ function FeedPost(props) {
             className="home-feed__post__img"
             src={`${process.env.REACT_APP_SERVER_URL}/images/${item.img}`}
           />
+          <div>
+            <img src={addComment}/>
+            </div>
           <div className="home-feed__post__like-container">
             <h3>{item.likes.length}</h3>
             <img className="home-feed__post__like" src={emptyHeart} />
