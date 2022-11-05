@@ -1,5 +1,5 @@
 import "./mobile-footer.scss";
-import addPostIcon from "../../assets/icons/circle-plus.svg";
+import addPostIcon from "../../assets/icons/camera-plus.svg";
 import profileIcon from "../../assets/icons/user.svg";
 import { Link } from "react-router-dom"
 
