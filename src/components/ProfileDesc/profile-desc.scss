@@ -4,7 +4,10 @@
 
 .profile {
   &-desc {
-    padding: 5rem 0;
+    padding-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    margin-bottom: 1rem;
     &-top {
       padding: 0 2rem;
       padding-top: 1rem;

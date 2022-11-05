@@ -6,6 +6,7 @@ import ProfileFeed from "../../components/ProfileFeed/ProfileFeed";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./profile-page.scss"
 
 function ProfilePage() {
   const userURL = `${process.env.REACT_APP_SERVER_URL}/users`;
@@ -35,13 +36,15 @@ function ProfilePage() {
     return "loading";
   }
   return (
-    <div className="profile-page">
+    <>
       <MobileHeader />
       <Header />
-      <ProfileDesc user={user} />
-      <ProfileFeed userPosts={userPosts} />
+      <div className="profile-page">
+        <ProfileDesc user={user} />
+        <ProfileFeed userPosts={userPosts} />
+      </div>
       <MobileFooter />
-    </div>
+    </>
   );
 }
 

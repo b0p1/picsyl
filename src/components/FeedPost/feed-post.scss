@@ -52,6 +52,14 @@
         height: 20rem;
       }
     }
+    &__actions{
+      display: flex;
+      justify-content: flex-end;
+      align-items:center;
+    }
+    &__comment{
+      margin-top: .15rem;
+    }
     &__like {
       &-container {
         display: flex;
@@ -60,6 +68,9 @@
         @include desktop {
           display: none;
         }
+      }
+      &--clicked{
+        display: flex;
       }
     }
     &__desc {

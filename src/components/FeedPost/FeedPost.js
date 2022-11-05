@@ -1,11 +1,10 @@
 import "./feed-post.scss";
-import { useParams , Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import emptyHeart from "../../assets/icons/empty-heart.svg";
-import redHeart from "../../assets/icons/red-heart.svg"
-import addComment from "../../assets/icons/comment.svg"
-
+import redHeart from "../../assets/icons/red-heart.svg";
+import addComment from "../../assets/icons/comment.svg";
 
 function FeedPost(props) {
   const URL = `${process.env.REACT_APP_SERVER_URL}/posts`;
@@ -21,12 +20,12 @@ function FeedPost(props) {
       .get(`${URL}`)
       .then((resp) => {
         setPosts(resp.data);
-        // const postId = id || resp.data[0].id;
-        // return axios.get(`${URL}/${postId}`);
+        const postId = id || resp.data[0].id;
+        return axios.get(`${URL}/${postId}`);
       })
-      //   .then((resp) => {
-      //     setSelected(resp.data);
-      //   })
+        .then((resp) => {
+          setSelected(resp.data);
+        })
       .catch(() => {
         console.error("Error");
       });
@@ -55,12 +54,13 @@ function FeedPost(props) {
             className="home-feed__post__img"
             src={`${process.env.REACT_APP_SERVER_URL}/images/${item.img}`}
           />
-          <div>
-            <img src={addComment}/>
+          <div className="home-feed__post__actions">
+            <img className="home-feed__post__comment" src={addComment} />
+            <div className="home-feed__post__like-container">
+              <h3>{item.likes.length}</h3>
+              <img className="home-feed__post__like" src={emptyHeart} />
+              <img className="home-feed__post__like--clicked" src={redHeart} />
             </div>
-          <div className="home-feed__post__like-container">
-            <h3>{item.likes.length}</h3>
-            <img className="home-feed__post__like" src={emptyHeart} />
           </div>
 
           <div className="home-feed__post__desc">
