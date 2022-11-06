@@ -8,6 +8,7 @@ import addComment from "../../assets/icons/comment.svg";
 import MobileHeader from "../../components/MobileHeader/MobileHeader";
 import MobileFooter from "../../components/MobileFooter/MobileFooter";
 import Header from "../../components/Header/Header";
+import AddComment from "../../components/AddComment/AddComment";
 
 function SinglePostPage(props) {
   const URL = `${process.env.REACT_APP_SERVER_URL}`;
@@ -37,7 +38,7 @@ function SinglePostPage(props) {
       <MobileHeader />
       <Header />
       <div className="single-post" key={post.id}>
-        <Link to={`/users/${post.user_id}`}>
+        <Link to={`/users/${post.id}`}>
           <div className="single-post-details">
             <img
               className="single-post__profile"
@@ -76,6 +77,7 @@ function SinglePostPage(props) {
               <span className="single-post__comments__username">{comment.username}: </span>
               {comment.text}
             </h4>
+            <AddComment/>
           </div>
         ))}
       </div>
