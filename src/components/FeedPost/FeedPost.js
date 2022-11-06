@@ -9,7 +9,6 @@ import addComment from "../../assets/icons/comment.svg";
 function FeedPost(props) {
   const URL = `${process.env.REACT_APP_SERVER_URL}/posts`;
   const [posts, setPosts] = useState([]);
-  const [selectedPost, setSelected] = useState(null);
 
   const { id } = useParams();
 
@@ -20,12 +19,7 @@ function FeedPost(props) {
       .get(`${URL}`)
       .then((resp) => {
         setPosts(resp.data);
-        const postId = id || resp.data[0].id;
-        return axios.get(`${URL}/${postId}`);
       })
-        .then((resp) => {
-          setSelected(resp.data);
-        })
       .catch(() => {
         console.error("Error");
       });
@@ -55,7 +49,9 @@ function FeedPost(props) {
             src={`${process.env.REACT_APP_SERVER_URL}/images/${item.img}`}
           />
           <div className="home-feed__post__actions">
-            <img className="home-feed__post__comment" src={addComment} />
+            <Link to={`/posts/${item.id}`}>
+              <img className="home-feed__post__comment" src={addComment} />
+            </Link>
             <div className="home-feed__post__like-container">
               <h3>{item.likes.length}</h3>
               <img className="home-feed__post__like" src={emptyHeart} />

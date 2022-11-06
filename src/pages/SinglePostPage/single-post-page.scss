@@ -1,0 +1,114 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.single {
+  @include tablet {
+    padding: 5rem 2.5rem;
+  }
+  @include desktop {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &-post {
+    padding: 5rem 0;
+    @include tablet {
+      padding: 5 2.5rem;
+    }
+    @include desktop {
+      width: 20rem;
+      height: 20rem;
+    }
+    &-details {
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+    }
+    &__profile {
+      object-fit: cover;
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    &__username {
+      margin: 0;
+      padding: 0 0.5rem;
+      font-family: $jost-med;
+    }
+    &__img {
+      width: 100%;
+      object-fit: cover;
+      height: auto;
+      @include tablet {
+        max-height: 40rem;
+        border-radius: 1rem;
+      }
+      @include desktop {
+        width: 20rem;
+        height: 20rem;
+      }
+    }
+    &__actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    &__comment {
+      margin-top: 0.15rem;
+    }
+    &__like {
+      &-container {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0.125rem 1.5rem;
+        @include desktop {
+          display: none;
+        }
+      }
+      &--clicked {
+        display: flex;
+      }
+    }
+    &__desc {
+      padding: 0 1rem;
+      margin-bottom: 2rem;
+      @include desktop {
+        display: none;
+      }
+      &-username {
+        font-family: $jost-semi;
+        margin: 0;
+      }
+      &-txt {
+        font-family: $jost-light;
+      }
+    }
+    &__comments {
+      padding: 0 1rem;
+      margin-bottom: .5rem;
+      @include desktop {
+        display: none;
+      }
+      &__title{
+        padding: 0 1rem;
+      }
+      &__img{
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+      }
+      &__username {
+        font-family: $jost-semi;
+        margin: 0;
+      }
+      &__txt {
+        font-family: $jost-light;
+        margin: 0;
+      }
+    }
+  }
+}
