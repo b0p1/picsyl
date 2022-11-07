@@ -7,16 +7,16 @@ import redHeart from "../../assets/icons/red-heart.svg";
 import addComment from "../../assets/icons/comment.svg";
 
 function FeedPost(props) {
-  const URL = `${process.env.REACT_APP_SERVER_URL}/posts`;
+  const URL = `${process.env.REACT_APP_SERVER_URL}`;
+  const [liked, setLiked] = useState(false);
   const [posts, setPosts] = useState([]);
 
   const { id } = useParams();
 
-  // console.log(posts);
-
   useEffect(() => {
+    // Fetches all posts
     axios
-      .get(`${URL}`)
+      .get(`${URL}/posts`)
       .then((resp) => {
         setPosts(resp.data);
       })
@@ -29,6 +29,7 @@ function FeedPost(props) {
   if (!posts) {
     return "loading";
   }
+
   return (
     <div className="home-feed">
       {posts.map((item) => (
@@ -37,7 +38,7 @@ function FeedPost(props) {
             <div className="home-feed__post-details">
               <img
                 className="home-feed__post__profile"
-                src={`${process.env.REACT_APP_SERVER_URL}/images/${item.user_img}`}
+                src={`${URL}/images/${item.user_img}`}
                 alt={`${item.username}'s profile picture`}
               />
               <h3 className="home-feed__post__username">{item.username} </h3>
@@ -46,7 +47,7 @@ function FeedPost(props) {
 
           <img
             className="home-feed__post__img"
-            src={`${process.env.REACT_APP_SERVER_URL}/images/${item.img}`}
+            src={`${URL}/images/${item.img}`}
           />
           <div className="home-feed__post__actions">
             <Link to={`/posts/${item.id}`}>
@@ -54,8 +55,11 @@ function FeedPost(props) {
             </Link>
             <div className="home-feed__post__like-container">
               <h3>{item.likes.length}</h3>
-              <img className="home-feed__post__like" src={emptyHeart} />
-              <img className="home-feed__post__like--clicked" src={redHeart} />
+              <img
+                className="home-feed__post__like"
+                // onClick={updateLikes()}
+                src={liked ? redHeart : emptyHeart}
+              />
             </div>
           </div>
 

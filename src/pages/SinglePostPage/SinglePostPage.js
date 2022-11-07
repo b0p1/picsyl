@@ -13,24 +13,40 @@ function SinglePostPage(props) {
   const URL = `${process.env.REACT_APP_SERVER_URL}`;
   const [liked, setLiked] = useState(false);
   const [post, setPost] = useState();
-  console.log(liked);
-  if (liked === true) {
-    axios.post(`${URL}/likes`, { user_id: 5, post_id: post.id });
-  } else {
-    // axios.delete(`${URL}/likes`, { user_id: 5, post_id: post.id });
-  }
 
-  const { id } = useParams();
+  const updateLikes = () => {
+    if (!liked) {
+      axios.post(`${URL}/likes`, { user_id: 5, post_id: post.id }).then(() => {
+        getPost();
+      });
+    } else {
+      axios
+        .delete(`${URL}/likes`, { data: { user_id: 5, post_id: post.id } })
+        .then(() => {
+          getPost();
+        });
+    }
+  };
 
-  useEffect(() => {
+  const getPost = () => {
     axios
+      // Fetches a single post
       .get(`${URL}/posts/${id}`)
+
       .then((resp) => {
         setPost(resp.data);
+        const userLiked = resp.data.likes.find((like) => like.user_id === 5);
+        setLiked(userLiked);
       })
       .catch(() => {
         console.error("Error");
       });
+  };
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    getPost();
   }, [id]);
 
   // prevents error when first rendering
@@ -59,20 +75,7 @@ function SinglePostPage(props) {
         <div className="single-post__actions">
           <div className="single-post__like-container">
             <h3>{post.likes.length}</h3>
-            <img
-              onClick={() => setLiked(!liked)}
-              className={`single-post__like--hide${
-                liked === true ? "" : "single-post__like--clicked"
-              } `}
-              src={emptyHeart}
-            />
-            <img
-              onClick={() => setLiked(!liked)}
-              className={`single-post__like--hide${
-                liked === false ? "" : "single-post__like--clicked"
-              } `}
-              src={redHeart}
-            />
+            <img onClick={updateLikes} src={liked ? redHeart : emptyHeart} />
           </div>
         </div>
         <div className="single-post__desc">

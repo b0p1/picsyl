@@ -1,18 +1,22 @@
 import "./profile-feed.scss";
 import emptyHeart from "../../assets/icons/empty-heart.svg";
+import { Link } from "react-router-dom";
 
 function ProfileFeed({ userPosts }) {
   if (!userPosts) {
     return "loading";
   }
+  console.log(userPosts);
   return (
     <div className="profile-feed">
       {userPosts.map((item) => (
         <div className="profile-feed__post" key={item.id}>
-          <img
-            className="profile-feed__post"
-            src={`${process.env.REACT_APP_SERVER_URL}/images/${item.img}`}
-          />
+          <Link to={`/posts/${item.id}`}>
+            <img
+              className="profile-feed__post"
+              src={`${process.env.REACT_APP_SERVER_URL}/images/${item.img}`}
+            />
+          </Link>
           <div className="profile -feed__post__like-container">
             <h3>{item.likes.length}</h3>
             <img className="profile -feed__post__like" src={emptyHeart} />
