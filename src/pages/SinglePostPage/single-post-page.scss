@@ -8,9 +8,6 @@
   }
   @include desktop {
     padding: 0;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
   }
 
   &-post {
@@ -68,6 +65,9 @@
         @include desktop {
           display: none;
         }
+      }
+      &--hide{
+        display: none;
       }
       &--clicked {
         display: flex;

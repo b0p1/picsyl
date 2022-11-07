@@ -19,10 +19,7 @@ function UploadPage(props) {
     formData.append("desc", desc);
     formData.append("file", file);
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/posts`, formData)
-      .then((res) => {
-        alert("File Upload success");
-      })
+      .post(`${process.env.REACT_APP_SERVER_URL}/posts`, formData, {user_id: 5})
       .catch((err) => alert("File Upload Error"));
   };
 
@@ -39,7 +36,7 @@ function UploadPage(props) {
       >
         {/* <label htmlFor="file">Image file</label> */}
         <div className="upload-form__choose-file">
-        <img
+          <img
             className="upload-form__file-icon"
             src={PublishIcon}
             alt="Publish Icon"
@@ -50,10 +47,8 @@ function UploadPage(props) {
             type="file"
             name="file"
             id="file"
-            //   value=
             onChange={(e) => setFile(e.target.files[0])}
           />
-        
         </div>
 
         <label className="upload-form__label" htmlFor="desc-box">
