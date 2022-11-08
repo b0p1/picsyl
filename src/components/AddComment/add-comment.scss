@@ -3,37 +3,42 @@
 @use "../../styles/partials/mixins" as *;
 
 .add-comment {
-  display: none;
+  padding: 0 1rem;
+  width: 88%;
+  @include tablet {
+    width: 50%;
+    padding: 0 0.5rem;
+  }
   @include desktop {
     padding: 0.5rem 1rem;
     display: flex;
     position: relative;
-    &__input {
-      font-family: $jost-semi;
-      padding: 0.5rem;
-      width: 100%;
-      background: rgba(1, 12, 72, 0.418);
-      border: none;
-      border-radius: 1rem;
-      box-shadow: 4px 4px $space-cadet;
+  }
+  &__input {
+    font-family: $jost-semi;
+    padding: 0.5rem;
+    width: 100%;
+    background: rgba(1, 12, 72, 0.418);
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 4px 4px $space-cadet;
+    color: white;
+    &::placeholder {
       color: white;
-      &::placeholder {
-        color: white;
-        font-family: $jost-light;
-      }
-      &:focus {
-        outline: 1px solid $space-cadet;
-      }
+      font-family: $jost-light;
     }
-    &__submit {
-      background: none;
-      border: none;
-      position: absolute;
-      right: 1.5rem;
-      top: 0.9rem;
-      &__img {
-        filter: brightness(0) invert(1);
-      }
+    &:focus {
+      outline: 1px solid $space-cadet;
+    }
+  }
+  &__submit {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 1.5rem;
+    top: 0.9rem;
+    &__img {
+      filter: brightness(0) invert(1);
     }
   }
 }

@@ -5,16 +5,12 @@
 .single {
   &-post {
     padding: 5rem 0;
-    padding-bottom: 3rem;
     @include tablet {
       padding: 5rem 2.5rem;
     }
     @include desktop {
-      padding: 0;
-    }
-    @include desktop {
       width: 20rem;
-      height: 20rem;
+      height: auto;
     }
     &-details {
       padding: 0.75rem 1rem;
