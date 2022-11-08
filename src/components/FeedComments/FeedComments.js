@@ -1,12 +1,13 @@
 import "./feed-comments.scss";
 
 function FeedComments({ post }) {
+  const URL = `${process.env.REACT_APP_SERVER_URL}`;
   console.log(post.comments);
   return (
     <div className="post-feed__comments">
-      {/* <h3 className="post-feed__comments__title">Comments: </h3> */}
+   
       {post.comments.map((comment) => (
-        <div className="post-feed__comments" key={comment.id}>
+        <div className="post-feed__comments__single" key={comment.id}>
           <img
             className="post-feed__comments__img"
             src={`${URL}/images/${comment.user_img}`}

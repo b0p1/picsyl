@@ -107,7 +107,7 @@ function SinglePostPage(props) {
             </h4>
           </div>
         ))}
-        <AddComment post={post} />
+        <AddComment post={post} getPost={getPost}/>
       </div>
       <MobileFooter />
     </>

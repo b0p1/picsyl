@@ -6,17 +6,30 @@ import emptyHeart from "../../assets/icons/empty-heart.svg";
 import redHeart from "../../assets/icons/red-heart.svg";
 import addComment from "../../assets/icons/comment.svg";
 import FeedComments from "../FeedComments/FeedComments";
-import AddComment from "../AddComment/AddComment"
+import DesktopAddComment from "../DesktopAddComment/DesktopAddComment";
 
-function FeedPost(props) {
+function FeedPost() {
   const URL = `${process.env.REACT_APP_SERVER_URL}`;
-  const [liked, setLiked] = useState(false);
   const [posts, setPosts] = useState([]);
 
   const { id } = useParams();
 
-  useEffect(() => {
-    // Fetches all posts
+  const updateLikes = (post) => {
+    const liked = post.likes.find((like) => like.user_id === 5);
+    if (!liked) {
+      axios.post(`${URL}/likes`, { user_id: 5, post_id: post.id }).then(() => {
+        getPosts();
+      });
+    } else {
+      axios
+        .delete(`${URL}/likes`, { data: { user_id: 5, post_id: post.id } })
+        .then(() => {
+          getPosts();
+        });
+    }
+  };
+
+  const getPosts = () => {
     axios
       .get(`${URL}/posts`)
       .then((resp) => {
@@ -25,6 +38,15 @@ function FeedPost(props) {
       .catch(() => {
         console.error("Error");
       });
+  };
+
+  const likedPost = (post) => {
+    return !!post.likes.find((like) => like.user_id === 5);
+  };
+
+  useEffect(() => {
+    // Fetches all posts
+    getPosts();
   }, [id]);
 
   // prevents error when first rendering
@@ -52,31 +74,32 @@ function FeedPost(props) {
             src={`${URL}/images/${post.img}`}
           />
           <div className="home-feed__post__actions-container">
-          <div className="home-feed__post__actions">
-            <Link to={`/posts/${post.id}`}>
-              <img className="home-feed__post__comment" src={addComment} />
-            </Link>
-            <Link to={`/posts/${post.id}`}>
+            <div className="home-feed__post__actions">
+              <Link to={`/posts/${post.id}`}>
+                <img className="home-feed__post__comment" src={addComment} />
+              </Link>
+              {/* <Link to={`/posts/${post.id}`}> */}
               <div className="home-feed__post__like-container">
                 <h3>{post.likes.length}</h3>
 
                 <img
                   className="home-feed__post__like"
-                  src={liked ? redHeart : emptyHeart}
+                  onClick={() => updateLikes(post)}
+                  src={likedPost(post) ? redHeart : emptyHeart}
                 />
               </div>
-            </Link>
-          </div>
+              {/* </Link> */}
+            </div>
 
-          <div className="home-feed__post__desc">
-            <h4 className="home-feed__post__desc-username">
-              {" "}
-              {post.username}{" "}
-              <span className="home-feed__post__desc-txt">{post.desc} </span>
-            </h4>
-          </div>
-          <FeedComments post={post}/>
-          {/* <AddComment/> */}
+            <div className="home-feed__post__desc">
+              <h4 className="home-feed__post__desc-username">
+                {" "}
+                {post.username}{" "}
+                <span className="home-feed__post__desc-txt">{post.desc} </span>
+              </h4>
+            </div>
+            <FeedComments post={post} />
+            <DesktopAddComment post={post} getPosts={getPosts}/>
           </div>
         </div>
       ))}
