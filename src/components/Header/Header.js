@@ -13,8 +13,12 @@ function Header(props) {
         </Link>
       </div>
       <div className="header__icon-container">
-        <img className="header__icon" src={addPostIcon} />
-        <img className="header__icon" src={profileIcon} />
+        <Link to="/upload">
+          <img className="header__icon" src={addPostIcon} />
+        </Link>
+        <Link to={`/users/5`}>
+          <img className="header__icon" src={profileIcon} />
+        </Link>
       </div>
     </div>
   );

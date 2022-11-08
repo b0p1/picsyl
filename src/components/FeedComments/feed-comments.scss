@@ -1,0 +1,21 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.post-feed__comments {
+  display: none;
+  @include desktop {
+    display: flex;
+    flex-direction: column;
+    text-overflow: clip;
+  }
+  &__title {
+    padding: 0 1rem;
+  }
+  &__img {
+    padding: 0 1rem;
+  }
+  &__txt {
+    padding: 0 1rem;
+  }
+}

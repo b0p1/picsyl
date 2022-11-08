@@ -8,7 +8,7 @@
     padding: 5rem 2.5rem;
   }
   @include desktop {
-    padding: 0;
+    padding: 1rem 6rem;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -19,13 +19,23 @@
       padding: 0 2.5rem;
     }
     @include desktop {
-      width: 20rem;
-      height: 20rem;
+      width: 100%;
+      padding-top: 4rem;
+      padding-bottom: 3rem;
+      display: flex;
+      position: relative;
     }
     &-details {
       padding: 0.75rem 1rem;
       display: flex;
       align-items: center;
+      @include tablet {
+        padding: 0.75rem 0;
+      }
+      @include desktop {
+        position: absolute;
+        top: 0;
+      }
     }
     &__profile {
       object-fit: cover;
@@ -48,36 +58,55 @@
         border-radius: 1rem;
       }
       @include desktop {
-        width: 20rem;
-        height: 20rem;
+        border-radius: 0.5rem;
+        width: 60%;
+        height: auto;
+        // max-height: 30rem;
       }
     }
-    &__actions{
+    &__actions {
       display: flex;
       justify-content: flex-end;
-      align-items:center;
+      align-items: center;
+      margin: 0;
+      @include desktop {
+        justify-content: flex-start;
+        padding: 0 1.5rem;
+      }
+      &-container {
+        @include desktop {
+          width: 40%;
+        }
+      }
     }
-    &__comment{
-      margin-top: .15rem;
+    &__comment {
+      margin-top: 0.5rem;
+      @include desktop {
+        width: 1.5rem;
+      margin-top: 0.75rem;
+
+      }
     }
     &__like {
+      margin-left: 0.5rem;
+      @include desktop {
+        width: 1.5rem;
+      }
       &-container {
         display: flex;
         justify-content: flex-end;
         padding: 0.125rem 1.5rem;
         @include desktop {
-          display: none;
+          // display: none;
         }
-      }
-      &--clicked{
-        display: flex;
       }
     }
     &__desc {
       padding: 0 1rem;
       margin-bottom: 2rem;
       @include desktop {
-        display: none;
+        font-size: 1.25rem;
+        padding: 0 1.5rem;
       }
       &-username {
         font-family: $jost-semi;
