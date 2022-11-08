@@ -55,7 +55,7 @@ function SinglePostPage(props) {
   }
   return (
     <>
-      <SinglePostHeader post={post}/>
+      <SinglePostHeader post={post} />
       <Header />
       <div className="single-post" key={post.id}>
         <Link to={`/users/${post.user_id}`}>
@@ -89,7 +89,7 @@ function SinglePostPage(props) {
             <span className="single-post__desc-txt">{post.desc} </span>
           </h4>
         </div>
-        <h3 className="single-post__comments__title">Comments: </h3>
+
         {post.comments.map((comment) => (
           <div className="single-post__comments" key={comment.id}>
             <img
@@ -97,9 +97,12 @@ function SinglePostPage(props) {
               src={`${URL}/images/${comment.user_img}`}
             />
             <h4 className="single-post__comments__txt">
-              <span className="single-post__comments__username">
-                {comment.username}:{" "}
-              </span>
+              <Link to={`../users/${comment.user_id}`}>
+                <span className="single-post__comments__username">
+                  {comment.username}:{" "}
+                </span>
+              </Link>
+
               {comment.text}
             </h4>
           </div>

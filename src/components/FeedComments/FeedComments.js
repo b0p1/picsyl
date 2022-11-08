@@ -1,10 +1,10 @@
 import "./feed-comments.scss";
 
-function Comments({ post }) {
+function FeedComments({ post }) {
   console.log(post.comments);
   return (
     <div className="post-feed__comments">
-      <h3 className="post-feed__comments__title">Comments: </h3>
+      {/* <h3 className="post-feed__comments__title">Comments: </h3> */}
       {post.comments.map((comment) => (
         <div className="post-feed__comments" key={comment.id}>
           <img
@@ -23,4 +23,4 @@ function Comments({ post }) {
   );
 }
 
-export default Comments;
+export default FeedComments;

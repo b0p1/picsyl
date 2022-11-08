@@ -3,27 +3,31 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-   display: none;
- @include desktop {
-   display: flex;
-   align-items: center;
-   padding: 1.5rem 2.5rem;
-   &__logo {
-     width: 10rem;
-     height: auto;
-     &-container {
-       width: 90%;
-     }
-   }
-   &__icon {
-     height: 2rem;
-     width: 2rem;
-     margin: 0.5rem;
-     &-container {
-       display: flex;
-       justify-content: space-between;
-       width: 10%;
-     }
-   }
- }
+  display: none;
+  @include desktop {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    &__logo {
+      width: 10rem;
+      height: auto;
+      &-container {
+        width: 90%;
+      }
+    }
+    &__icon {
+      height: 2rem;
+      width: 2rem;
+      margin: 0.5rem;
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        width: 10%;
+        align-items: center;
+      }
+      &__add-post {
+        margin-top: 0.75rem;
+      }
+    }
+  }
 }

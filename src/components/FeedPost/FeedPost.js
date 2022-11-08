@@ -5,7 +5,7 @@ import axios from "axios";
 import emptyHeart from "../../assets/icons/empty-heart.svg";
 import redHeart from "../../assets/icons/red-heart.svg";
 import addComment from "../../assets/icons/comment.svg";
-import Comments from "../FeedComments/FeedComments";
+import FeedComments from "../FeedComments/FeedComments";
 import AddComment from "../AddComment/AddComment"
 
 function FeedPost(props) {
@@ -75,8 +75,8 @@ function FeedPost(props) {
               <span className="home-feed__post__desc-txt">{post.desc} </span>
             </h4>
           </div>
-          {/* <Comments post={post}/>
-          <AddComment/> */}
+          <FeedComments post={post}/>
+          {/* <AddComment/> */}
           </div>
         </div>
       ))}
