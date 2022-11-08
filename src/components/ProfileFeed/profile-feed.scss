@@ -2,10 +2,31 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.profile-feed{
-    display: flex;
-    flex-wrap: wrap;
-    &__post{
-        width: 100%;
+.profile-feed {
+  display: flex;
+  //   justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  @include desktop {
+    flex-wrap: none;
+  }
+  &__post {
+    width: 8rem;
+    height: 8rem;
+    border: 0.5px solid white;
+    object-fit: cover;
+    @include tablet {
+      width: 15rem;
+      height: 15rem;
     }
+    @include desktop {
+      width: 100%;
+    }
+    &__like-container {
+      display: none;
+    }
+    &__desc {
+      display: none;
+    }
+  }
 }

@@ -17,15 +17,15 @@ function ProfileFeed({ userPosts }) {
               src={`${process.env.REACT_APP_SERVER_URL}/images/${item.img}`}
             />
           </Link>
-          <div className="profile -feed__post__like-container">
+          <div className="profile-feed__post__like-container">
             <h3>{item.likes.length}</h3>
-            <img className="profile -feed__post__like" src={emptyHeart} />
+            <img className="profile-feed__post__like" src={emptyHeart} />
           </div>
-          <div className="profile -feed__post__desc">
-            <h4 className="profile -feed__post__desc-username">
+          <div className="profile-feed__post__desc">
+            <h4 className="profile-feed__post__desc-username">
               {" "}
               {item.username}{" "}
-              <span className="profile -feed__post__desc-txt">
+              <span className="profile-feed__post__desc-txt">
                 {item.desc}{" "}
               </span>
             </h4>
