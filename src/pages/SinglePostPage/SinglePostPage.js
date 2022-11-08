@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import emptyHeart from "../../assets/icons/empty-heart.svg";
 import redHeart from "../../assets/icons/red-heart.svg";
-import MobileHeader from "../../components/MobileHeader/MobileHeader";
 import MobileFooter from "../../components/MobileFooter/MobileFooter";
 import Header from "../../components/Header/Header";
 import AddComment from "../../components/AddComment/AddComment";
+import SinglePostHeader from "../../components/SinglePostHeader/SinglePostHeader";
 
 function SinglePostPage(props) {
   const URL = `${process.env.REACT_APP_SERVER_URL}`;
@@ -55,10 +55,10 @@ function SinglePostPage(props) {
   }
   return (
     <>
-      <MobileHeader />
+      <SinglePostHeader post={post}/>
       <Header />
       <div className="single-post" key={post.id}>
-        <Link to={`/users/${post.id}`}>
+        <Link to={`/users/${post.user_id}`}>
           <div className="single-post-details">
             <img
               className="single-post__profile"
@@ -75,7 +75,11 @@ function SinglePostPage(props) {
         <div className="single-post__actions">
           <div className="single-post__like-container">
             <h3>{post.likes.length}</h3>
-            <img onClick={updateLikes} src={liked ? redHeart : emptyHeart} />
+            <img
+              onClick={updateLikes}
+              src={liked ? redHeart : emptyHeart}
+              className="single-post__like"
+            />
           </div>
         </div>
         <div className="single-post__desc">

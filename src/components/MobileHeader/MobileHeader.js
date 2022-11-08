@@ -6,7 +6,7 @@ function MobileHeader(props) {
   return (
     <div className="mobile-header">
       <Link to="/">
-        <img className="header__logo" src={logo} />
+        <img className="mobile-header__logo" src={logo} />
       </Link>
     </div>
   );

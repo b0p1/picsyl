@@ -3,17 +3,14 @@
 @use "../../styles/partials/mixins" as *;
 
 .single {
-  @include tablet {
-    padding: 5rem 2.5rem;
-  }
-  @include desktop {
-    padding: 0;
-  }
-
   &-post {
     padding: 5rem 0;
+    padding-bottom: 3rem;
     @include tablet {
-      padding: 5 2.5rem;
+      padding: 5rem 2.5rem;
+    }
+    @include desktop {
+      padding: 0;
     }
     @include desktop {
       width: 20rem;
@@ -58,6 +55,7 @@
       margin-top: 0.15rem;
     }
     &__like {
+      margin-left: 0.5rem;
       &-container {
         display: flex;
         justify-content: flex-end;
@@ -65,12 +63,6 @@
         @include desktop {
           display: none;
         }
-      }
-      &--hide{
-        display: none;
-      }
-      &--clicked {
-        display: flex;
       }
     }
     &__desc {
@@ -89,16 +81,26 @@
     }
     &__comments {
       padding: 0 1rem;
-      margin-bottom: .5rem;
+      padding-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      // background-color: rgba(21, 110, 227, 0.3);
+      // color: $space-cadet;
       @include desktop {
         display: none;
       }
-      &__title{
-        padding: 0 1rem;
+      &__title {
+        margin: 0;
+        padding: 1rem;
+        font-size: 1.05rem;
+        font-family: $jost-semi;
+        // background-color: rgba(21, 110, 227, 0.3);
       }
-      &__img{
+      &__img {
         width: 2rem;
         height: 2rem;
+        margin-right: 0.5rem;
         border-radius: 50%;
       }
       &__username {
