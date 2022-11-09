@@ -1,0 +1,11 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.page-not-found {
+  text-align: center;
+}
+
+.home-link {
+  color: $blue;
+}

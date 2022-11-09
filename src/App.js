@@ -4,6 +4,7 @@ import HomeFeedPage from "./pages/HomeFeedPage/HomeFeedPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import UploadPage from "./pages/UploadPage/UploadPage";
 import SinglePostPage from "./pages/SinglePostPage/SinglePostPage";
+import PageNotFound from "./pages/PagNotFound/PageNotFound";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="/users/:id" element={<ProfilePage />} />
           <Route path="/upload" element={<UploadPage />} />
           <Route path="/posts/:id" element={<SinglePostPage />} />
-          {/* <Route path="*" element={<NotFoundPage/>} /> */}
+          <Route path="*" element={<PageNotFound/>} />
         </Routes>
       </BrowserRouter>
     </>
