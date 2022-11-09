@@ -13,6 +13,8 @@
     padding: 0.5rem 1rem;
     display: flex;
     position: relative;
+    width: 100%;
+    padding: 0;
   }
   &__input {
     font-family: $jost-semi;
@@ -23,6 +25,10 @@
     border-radius: 1rem;
     box-shadow: 4px 4px $space-cadet;
     color: white;
+    @include desktop {
+      width: 20rem;
+      margin-right: 1rem;
+    }
     &::placeholder {
       color: white;
       font-family: $jost-light;
@@ -39,6 +45,9 @@
     top: 0.9rem;
     &__img {
       filter: brightness(0) invert(1);
+    }
+    @include desktop {
+      top: 0.5rem;
     }
   }
 }

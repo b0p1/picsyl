@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import emptyHeart from "../../assets/icons/empty-heart.svg";
 import redHeart from "../../assets/icons/red-heart.svg";
+import backArrow from "../../assets/icons/back-arrow.svg"
 import MobileFooter from "../../components/MobileFooter/MobileFooter";
 import Header from "../../components/Header/Header";
 import AddComment from "../../components/AddComment/AddComment";
@@ -60,6 +61,10 @@ function SinglePostPage(props) {
       <div className="single-post" key={post.id}>
         <Link to={`/users/${post.user_id}`}>
           <div className="single-post-details">
+            <Link to={`/users/${post.user_id}`}>
+            <img className="single-post-details__arrow" src={backArrow}/>
+            </Link>
+           
             <img
               className="single-post__profile"
               src={`${process.env.REACT_APP_SERVER_URL}/images/${post.user_img}`}
@@ -82,32 +87,44 @@ function SinglePostPage(props) {
             />
           </div>
         </div>
-        <div className="single-post__desc">
-          <h4 className="single-post__desc-username">
-            {" "}
-            {post.username}{" "}
-            <span className="single-post__desc-txt">{post.desc} </span>
-          </h4>
-        </div>
-
-        {post.comments.map((comment) => (
-          <div className="single-post__comments" key={comment.id}>
-            <img
-              className="single-post__comments__img"
-              src={`${URL}/images/${comment.user_img}`}
-            />
-            <h4 className="single-post__comments__txt">
-              <Link to={`../users/${comment.user_id}`}>
-                <span className="single-post__comments__username">
-                  {comment.username}:{" "}
-                </span>
-              </Link>
-
-              {comment.text}
+        <div className="single-post__comments-container">
+          <div className="single-post__desc">
+            <h4 className="single-post__desc-username">
+              {" "}
+              {post.username}{" "}
+              <span className="single-post__desc-txt">{post.desc} </span>
             </h4>
           </div>
-        ))}
-        <AddComment post={post} getPost={getPost}/>
+
+          {post.comments.map((comment) => (
+            <div className="single-post__comments" key={comment.id}>
+              <img
+                className="single-post__comments__img"
+                src={`${URL}/images/${comment.user_img}`}
+              />
+              <h4 className="single-post__comments__txt">
+                <Link to={`../users/${comment.user_id}`}>
+                  <span className="single-post__comments__username">
+                    {comment.username}:{" "}
+                  </span>
+                </Link>
+
+                {comment.text}
+              </h4>
+            </div>
+          ))}
+          <div className="single-post__like-container-bottom ">
+            <AddComment post={post} getPost={getPost} />
+            <h3 className="single-post__like-bottom-num">
+              {post.likes.length}
+            </h3>
+            <img
+              onClick={updateLikes}
+              src={liked ? redHeart : emptyHeart}
+              className="single-post__like-container-bottom__like"
+            />
+          </div>
+        </div>
       </div>
       <MobileFooter />
     </>

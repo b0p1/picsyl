@@ -36,7 +36,7 @@ function AddComment({ post, getPost }) {
             });
         }}
       >
-        <div className="add-comment add-comment-mobile">
+        <div className="add-comment">
           <input
             className="add-comment__input"
             type="text"
