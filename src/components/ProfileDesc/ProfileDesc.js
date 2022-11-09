@@ -1,6 +1,7 @@
 import "./profile-desc.scss";
 
 function ProfileDesc({ user }) {
+  const URL = `${process.env.REACT_APP_SERVER_URL}`;
   if (!user || !user.img || !user.desc || !user.name || !user.username) {
     return "loading";
   }
@@ -9,7 +10,7 @@ function ProfileDesc({ user }) {
       <div className="profile-desc-top">
         <img
           className="profile-desc-top__img"
-          src={`${process.env.REACT_APP_SERVER_URL}/images/${user.img} `}
+          src={`${URL}/images/${user.img} `}
           alt={`${user.username}'s profile picture`}
         />
         <h2>{user.username}</h2>

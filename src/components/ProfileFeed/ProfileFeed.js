@@ -3,6 +3,7 @@ import emptyHeart from "../../assets/icons/empty-heart.svg";
 import { Link } from "react-router-dom";
 
 function ProfileFeed({ userPosts }) {
+  const URL = `${process.env.REACT_APP_SERVER_URL}`;
   if (!userPosts) {
     return "loading";
   }
@@ -14,7 +15,7 @@ function ProfileFeed({ userPosts }) {
           <Link to={`/posts/${item.id}`}>
             <img
               className="profile-feed__post"
-              src={`${process.env.REACT_APP_SERVER_URL}/images/${item.img}`}
+              src={`${URL}/images/${item.img}`}
             />
           </Link>
           <div className="profile-feed__post__like-container">
@@ -25,9 +26,7 @@ function ProfileFeed({ userPosts }) {
             <h4 className="profile-feed__post__desc-username">
               {" "}
               {item.username}{" "}
-              <span className="profile-feed__post__desc-txt">
-                {item.desc}{" "}
-              </span>
+              <span className="profile-feed__post__desc-txt">{item.desc} </span>
             </h4>
           </div>
         </div>
