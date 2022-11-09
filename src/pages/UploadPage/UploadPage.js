@@ -12,14 +12,16 @@ function UploadPage(props) {
   const navigate = useNavigate();
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState("");
-
+  console.log(file);
   const submitForm = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("desc", desc);
     formData.append("file", file);
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/posts`, formData, {user_id: 5})
+      .post(`${process.env.REACT_APP_SERVER_URL}/posts`, formData, {
+        user_id: 5,
+      })
       .catch((err) => alert("File Upload Error"));
   };
 
@@ -51,6 +53,10 @@ function UploadPage(props) {
           />
         </div>
 
+        <h3 className="upload-form__file-name__title">
+          File: <span className="upload-form__file-name">{file.name}</span>{" "}
+        </h3>
+
         <label className="upload-form__label" htmlFor="desc-box">
           Add An Image Caption
         </label>
@@ -59,8 +65,9 @@ function UploadPage(props) {
           id="desc-box"
           className="upload-form__desc-box"
           autoComplete="off"
-          placeholder="Image desc"
+          placeholder="Please add an image description..."
           value={desc}
+          rows="3"
           onChange={(e) => setDesc(e.target.value)}
         ></textarea>
         <div className="upload-form__submit-container">
