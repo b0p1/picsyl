@@ -12,7 +12,7 @@ function UploadPage(props) {
   const navigate = useNavigate();
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState("");
-  console.log(file);
+ 
   const submitForm = (e) => {
     e.preventDefault();
     const formData = new FormData();

@@ -29,7 +29,7 @@ function ProfilePage() {
       });
   }, [id]);
 
-  //   console.log(user);
+
 
   // prevents error when first rendering
   if (!user) {

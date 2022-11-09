@@ -6,7 +6,7 @@ function ProfileFeed({ userPosts }) {
   if (!userPosts) {
     return "loading";
   }
-  console.log(userPosts);
+
   return (
     <div className="profile-feed">
       {userPosts.map((item) => (

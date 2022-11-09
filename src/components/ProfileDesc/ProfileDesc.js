@@ -1,7 +1,6 @@
 import "./profile-desc.scss";
 
 function ProfileDesc({ user }) {
-  //   console.log(user.img);
   if (!user || !user.img || !user.desc || !user.name || !user.username) {
     return "loading";
   }

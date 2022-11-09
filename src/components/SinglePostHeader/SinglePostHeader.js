@@ -4,7 +4,7 @@ import backArrow from "../../assets/icons/back-arrow.svg";
 import { Link } from "react-router-dom";
 
 function SinglePostHeader({ post }) {
-  console.log(post);
+
   return (
     <div className="single-post-header">
       <Link to={`/users/${post.user_id}`}>

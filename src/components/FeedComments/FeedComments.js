@@ -2,7 +2,7 @@ import "./feed-comments.scss";
 
 function FeedComments({ post }) {
   const URL = `${process.env.REACT_APP_SERVER_URL}`;
-  console.log(post.comments);
+  
   return (
     <div className="post-feed__comments">
    

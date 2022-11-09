@@ -19,7 +19,7 @@ function AddComment({ post, getPosts }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(post);
+        
           axios
             .post(`${process.env.REACT_APP_SERVER_URL}/comments`, {
               text: e.target.text.value,
