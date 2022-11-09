@@ -12,15 +12,22 @@ function UploadPage(props) {
   const navigate = useNavigate();
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState("");
- 
+
   const submitForm = (e) => {
     e.preventDefault();
+    navigate("/");
     const formData = new FormData();
     formData.append("desc", desc);
     formData.append("file", file);
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/posts`, formData, {
         user_id: 5,
+      })
+      .then(() => {
+        // refreshes page so most recent post is on top of feed
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 0.01);
       })
       .catch((err) => alert("File Upload Error"));
   };
@@ -31,7 +38,6 @@ function UploadPage(props) {
       <Header />
       <form
         onSubmit={(e) => {
-          navigate("/");
           submitForm(e);
         }}
         className="upload-form"

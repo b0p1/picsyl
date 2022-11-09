@@ -28,6 +28,7 @@ function AddComment({ post, getPosts }) {
             })
             .then(()=>{
               getPosts()
+              e.target.reset()
             })
 
             .catch((e) => {
