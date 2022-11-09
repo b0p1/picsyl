@@ -111,11 +111,14 @@ function SinglePostPage(props) {
 
                 {comment.text}
               </h4>
+              
             </div>
+            
           ))}
+          
           <div className="single-post__like-container-bottom ">
             <AddComment post={post} getPost={getPost} />
-            <h3 className="single-post__like-bottom-num">
+            <h3 className="single-post__like-container-bottom__num">
               {post.likes.length}
             </h3>
             <img
